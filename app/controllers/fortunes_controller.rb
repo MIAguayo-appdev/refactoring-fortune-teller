@@ -1,8 +1,13 @@
-class FireController < ApplicationController
+class FortunesController < ApplicationController
   def horoscopes
     all_zodiacs = Zodiac.list
+    this_zodiac = params.fetch("the_sign").to_sym
     this_zodiac = all_zodiacs.fetch(:aries)
     @horoscope = this_zodiac.fetch(:horoscope)
+
+    #all_zodiacs = Zodiac.list
+    #this_zodiac = all_zodiacs.fetch(:aries)
+    #@horoscope = this_zodiac.fetch(:horoscope)
     
     @array_of_numbers = Array.new
 
@@ -12,5 +17,7 @@ class FireController < ApplicationController
       @array_of_numbers.push(another_number)
     end
 
-    render({ :template => "flame_templates/aries.html.erb" })
+
+    render({ :template => "zodiacs.html.erb" })
   end
+end
