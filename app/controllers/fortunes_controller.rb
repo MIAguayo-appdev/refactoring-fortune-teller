@@ -2,8 +2,9 @@ class FortunesController < ApplicationController
   def horoscopes
     all_zodiacs = Zodiac.list
     this_zodiac = params.fetch("the_sign").to_sym
-    this_zodiac = all_zodiacs.fetch(:aries)
+    this_zodiac = all_zodiacs.fetch(this_zodiac)
     @horoscope = this_zodiac.fetch(:horoscope)
+    
 
     #all_zodiacs = Zodiac.list
     #this_zodiac = all_zodiacs.fetch(:aries)
